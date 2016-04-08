@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name = 'FMDB'
-  s.version = '2.6.2'
+  s.version = '2.6.3'
   s.summary = 'A Cocoa / Objective-C wrapper around SQLite.'
-  s.homepage = 'https://github.com/ccgus/fmdb'
+  s.homepage = 'https://github.com/damavik/fmdb'
   s.license = 'MIT'
   s.author = { 'August Mueller' => 'gus@flyingmeat.com' }
-  s.source = { :git => 'https://github.com/ccgus/fmdb.git', :tag => "#{s.version}" }
+  s.source = { :git => 'https://github.com/damavik/fmdb.git', :tag => "#{s.version}" }
   s.requires_arc = true
-  s.default_subspec = 'standard'  
+  s.default_subspec = 'standard'
 
   # use the built-in library version of sqlite3
   s.subspec 'standard' do |ss|
@@ -24,9 +24,9 @@ Pod::Spec.new do |s|
 
   # build the latest stable version of sqlite3
   s.subspec 'standalone' do |ss|
-    ss.default_subspec = 'default'    
+    ss.default_subspec = 'default'
     ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DFMDB_SQLITE_STANDALONE' }
-    
+
     ss.subspec 'default' do |sss|
       sss.dependency 'sqlite3'
       sss.source_files = 'src/fmdb/FM*.{h,m}'
@@ -48,5 +48,5 @@ Pod::Spec.new do |s|
     ss.exclude_files = 'src/fmdb.m'
     ss.xcconfig = { 'OTHER_CFLAGS' => '$(inherited) -DSQLITE_HAS_CODEC -DHAVE_USLEEP=1' }
   end
-  
+
 end
